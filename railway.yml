@@ -1,0 +1,11 @@
+build:
+  # Spécifie le contexte de build
+  context: .
+  dockerfile: Dockerfile
+
+deploy:
+  # Le port que l'application expose
+  startCommand: nginx -g 'daemon off;'
+  restartPolicyType: always
+  healthcheckPath: /
+  healthcheckTimeout: 10
