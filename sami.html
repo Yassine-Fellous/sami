@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Gran Turismo Taxi – Réservation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+}
+header {
+    background: #000;
+    padding: 30px;
+    text-align: center;
+}
+header h1 {
+    color: #e00000;
+    margin: 0;
+}
+.hero {
+    padding: 50px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #111, #1c1c1c);
+}
+.hero span { color: #e00000; }
+.btn {
+    background: #e00000;
+    padding: 15px 30px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+section { padding: 40px 20px; }
+.services ul {
+    max-width: 600px;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+}
+.services li {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+form {
+    max-width: 500px;
+    margin: auto;
+}
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #1c1c1c;
+    border: 1px solid #333;
+    color: #fff;
+}
+button {
+    width: 100%;
+    padding: 15px;
+    background: #e00000;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.map iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+}
+footer {
+    background: #000;
+    text-align: center;
+    padding: 15px;
+    color: #777;
+}
+</style>
+
+<script>
+function envoyerReservation() {
+    const nom = document.getElementById("nom").value;
+    const tel = document.getElementById("tel").value;
+    const depart = document.getElementById("depart").value;
+    const destination = document.getElementById("destination").value;
+    const date = document.getElementById("date").value;
+    const message = document.getElementById("message").value;
+
+    const texte = 
+`🚖 NOUVELLE RÉSERVATION 🚖
+Nom : ${nom}
+Téléphone : ${tel}
+Départ : ${depart}
+Destination : ${destination}
+Date & heure : ${date}
+Message : ${message}`;
+
+    // WhatsApp
+    window.open(
+      "https://wa.me/33672362015?text=" + encodeURIComponent(texte),
+      "_blank"
+    );
+
+    // Email
+    window.location.href =
+      "mailto:granturismotaxi@gmail.com" +
+      "?subject=Nouvelle réservation Taxi" +
+      "&body=" + encodeURIComponent(texte);
+}
+</script>
+</head>
+
+<body>
+
+<header>
+    <h1>GRAN TURISMO TAXI</h1>
+    <p>Taxi Premium – Marseille & Région</p>
+</header>
+
+<section class="hero">
+    <h2>Confort • <span>Ponctualité</span> • Discrétion</h2>
+    <p>📞 06 72 36 20 15 – 7j/7 – 24h/24</p>
+    <a href="#reservation" class="btn">Réserver maintenant</a>
+</section>
+
+<section class="services">
+    <h3>Nos services</h3>
+    <ul>
+        <li>✔ Transferts gare & aéroport</li>
+        <li>✔ Déplacements professionnels</li>
+        <li>✔ Longues distances</li>
+        <li>✔ Paiement CB accepté</li>
+    </ul>
+</section>
+
+<section id="reservation">
+    <h3 style="text-align:center;">Réservation immédiate</h3>
+    <form onsubmit="envoyerReservation(); return false;">
+        <input id="nom" placeholder="Nom & prénom" required>
+        <input id="tel" placeholder="Téléphone" required>
+        <input id="depart" placeholder="Lieu de départ" required>
+        <input id="destination" placeholder="Destination" required>
+        <input id="date" type="datetime-local" required>
+        <textarea id="message" placeholder="Infos complémentaires"></textarea>
+        <button type="submit">Envoyer la réservation</button>
+    </form>
+</section>
+
+<section class="map">
+    <h3 style="text-align:center;">Zone d’intervention</h3>
+    <iframe 
+      src="https://www.google.com/maps?q=Marseille&output=embed">
+    </iframe>
+</section>
+
+<footer>
+    Samy – Chauffeur Taxi Professionnel<br>
+    Gran Turismo Taxi – Marseille & Région
+</footer>
+
+</body>
+</html>
